@@ -70,7 +70,7 @@
           }
         }
       },
-      "SadConsole/10.0.0-beta3-debug": {
+      "SadConsole/10.0.0": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "13.0.3",
@@ -87,11 +87,11 @@
           }
         }
       },
-      "SadConsole.Extended/10.0.0-beta3-debug": {
+      "SadConsole.Extended/10.0.0": {
         "type": "package",
         "dependencies": {
           "ColorMineStandard": "1.0.0",
-          "SadConsole": "10.0.0-beta3-debug",
+          "SadConsole": "10.0.0",
           "System.Text.Encoding.CodePages": "6.0.0"
         },
         "compile": {
@@ -105,10 +105,10 @@
           }
         }
       },
-      "SadConsole.Host.MonoGame/10.0.0-beta3-debug": {
+      "SadConsole.Host.MonoGame/10.0.0": {
         "type": "package",
         "dependencies": {
-          "SadConsole": "10.0.0-beta3-debug"
+          "SadConsole": "10.0.0"
         },
         "compile": {
           "lib/net6.0/SadConsole.Host.MonoGame.dll": {
@@ -242,10 +242,10 @@
         "packageIcon.png"
       ]
     },
-    "SadConsole/10.0.0-beta3-debug": {
-      "sha512": "0f+Ik3ZZNrzG1QNLRF+8M4myKcMM0TVm/ueGeCms19K5Nj6Y8SSdMMq6ZENVYZy1n6EDWXkn9mdouYUJ8FneNA==",
+    "SadConsole/10.0.0": {
+      "sha512": "UpzC1YOxxqxyMvAsAio5ZpALDFbR4GphEQTIqWzmf1txpOdu0lCLv6nM+MAK/8Y94ouMw2Bq3H4PkI/CySjIcA==",
       "type": "package",
-      "path": "sadconsole/10.0.0-beta3-debug",
+      "path": "sadconsole/10.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -256,14 +256,14 @@
         "lib/net7.0/SadConsole.xml",
         "nugeticon.png",
         "readme.txt",
-        "sadconsole.10.0.0-beta3-debug.nupkg.sha512",
+        "sadconsole.10.0.0.nupkg.sha512",
         "sadconsole.nuspec"
       ]
     },
-    "SadConsole.Extended/10.0.0-beta3-debug": {
-      "sha512": "WhP5mCC9mJl3hbwVVS7NxUJzPm2KVXnpr2IDu8nphl8nqJM/w36+cGD/Tao6XxCou90FEhSzYdTuYWSy5iBEkw==",
+    "SadConsole.Extended/10.0.0": {
+      "sha512": "XEcG6eYX/EY3ItJm+PxJV6N5s2OjKyQzT72BoM/jV8T/AmlW4srZXoIzTvYQvtKDUwhD4d+KdHtk+bV7FHJSgA==",
       "type": "package",
-      "path": "sadconsole.extended/10.0.0-beta3-debug",
+      "path": "sadconsole.extended/10.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -272,14 +272,14 @@
         "lib/net7.0/SadConsole.Extended.dll",
         "lib/net7.0/SadConsole.Extended.xml",
         "nugeticon.png",
-        "sadconsole.extended.10.0.0-beta3-debug.nupkg.sha512",
+        "sadconsole.extended.10.0.0.nupkg.sha512",
         "sadconsole.extended.nuspec"
       ]
     },
-    "SadConsole.Host.MonoGame/10.0.0-beta3-debug": {
-      "sha512": "6OBrWoBrnECkhD28Ayybv1d7s7QCOAgbtHotvRq+QfL5tjtN4j6gw7aSMctZuFZJvTV2ZJLf2mh33y3oFYentg==",
+    "SadConsole.Host.MonoGame/10.0.0": {
+      "sha512": "zvr7QguabZmgWT827vsSCWH1v8Af+oxhB4UTdD9jqnBfeoJ9xdp15AYiLlIlknCssFoe3TcmttixbDamOth/cg==",
       "type": "package",
-      "path": "sadconsole.host.monogame/10.0.0-beta3-debug",
+      "path": "sadconsole.host.monogame/10.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -289,7 +289,7 @@
         "lib/net7.0/SadConsole.Host.MonoGame.xml",
         "nugeticon.png",
         "readme.txt",
-        "sadconsole.host.monogame.10.0.0-beta3-debug.nupkg.sha512",
+        "sadconsole.host.monogame.10.0.0.nupkg.sha512",
         "sadconsole.host.monogame.nuspec"
       ]
     },
@@ -382,12 +382,12 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "MonoGame.Framework.DesktopGL >= 3.8.1.303",
-      "SadConsole.Extended >= 10.0.0-beta3-debug",
-      "SadConsole.Host.MonoGame >= 10.0.0-beta3-debug"
+      "SadConsole.Extended >= 10.0.0",
+      "SadConsole.Host.MonoGame >= 10.0.0"
     ]
   },
   "packageFolders": {
-    "/home/codespace/.nuget/packages/": {}
+    "C:\\Users\\sdwdr\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -399,7 +399,7 @@
       "outputPath": "C:\\Users\\sdwdr\\Documents\\Rider Projects\\goofy_cave_game_cs\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/codespace/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\sdwdr\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -429,11 +429,11 @@
           },
           "SadConsole.Extended": {
             "target": "Package",
-            "version": "[10.0.0-beta3-debug, )"
+            "version": "[10.0.0, )"
           },
           "SadConsole.Host.MonoGame": {
             "target": "Package",
-            "version": "[10.0.0-beta3-debug, )"
+            "version": "[10.0.0, )"
           }
         },
         "imports": [

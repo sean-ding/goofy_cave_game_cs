@@ -14,7 +14,7 @@
         "outputPath": "C:\\Users\\sdwdr\\Documents\\Rider Projects\\goofy_cave_game_cs\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/codespace/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\sdwdr\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -44,11 +44,11 @@
             },
             "SadConsole.Extended": {
               "target": "Package",
-              "version": "[10.0.0-beta3-debug, )"
+              "version": "[10.0.0, )"
             },
             "SadConsole.Host.MonoGame": {
               "target": "Package",
-              "version": "[10.0.0-beta3-debug, )"
+              "version": "[10.0.0, )"
             }
           },
           "imports": [
