@@ -14,8 +14,7 @@ public static class ChunkManager
 
         if (chunk == null)
         {
-            chunk = new Chunk(null, new []{chunkY, chunkX}, layer, new Cave(), GetSeed());
-            _loadedChunks.Add(chunk);
+            chunk = Task.Run(() => LoadChunk(chunkY, chunkX, layer)).Result;
         }
 
         return chunk;
@@ -46,19 +45,22 @@ public static class ChunkManager
         _ = Task.Run(() => LoadChunk(chunkY + 1, chunkX + 1, layer));
     }
     
-    public static async Task LoadChunk(int chunkY, int chunkX, int layer)
+    public static async Task<Chunk> LoadChunk(int chunkY, int chunkX, int layer)
     {
-        if (_loadedChunks.Find(loadedChunk => loadedChunk.Position[0] == chunkY && loadedChunk.Position[1] == chunkX) != null) { return; }
+        var foundChunk = _loadedChunks.Find(loadedChunk => loadedChunk.Position[0] == chunkY && loadedChunk.Position[1] == chunkX);
+        if (foundChunk != null) { return foundChunk; }
         var createChunkTask = Task.Run(() => new Chunk(null, new[] { chunkY, chunkX }, layer, new Cave(), GetSeed()));
         var chunk = await createChunkTask;
-        if (_loadedChunks.Find(loadedChunk => loadedChunk.Position[0] == chunkY && loadedChunk.Position[1] == chunkX) != null) { return; }
+        foundChunk = _loadedChunks.Find(loadedChunk => loadedChunk.Position[0] == chunkY && loadedChunk.Position[1] == chunkX);
+        if (foundChunk != null) { return foundChunk; }
         _loadedChunks.Add(chunk);
+        return chunk;
     }
 
-    public static int[] ToLocalPosition(int[] position)
+    public static Point ToLocalPosition(Point position)
     {
-        var chunkPositionY = position[0] % CHUNK_HEIGHT;
-        var chunkPositionX = position[1] % CHUNK_WIDTH;
+        var chunkPositionY = position.Y % CHUNK_HEIGHT;
+        var chunkPositionX = position.X % CHUNK_WIDTH;
 
         if (chunkPositionY < 0)
         {
@@ -69,31 +71,31 @@ public static class ChunkManager
             chunkPositionX += CHUNK_WIDTH;
         }
         
-        return new[] { chunkPositionY, chunkPositionX };
+        return new Point(chunkPositionY, chunkPositionX);
     }
 
-    public static int[] GetChunkPosition(int[] position)
+    public static Point GetChunkPosition(Point position)
     {
         int chunkY;
         int chunkX;
-        if (position[0] < 0)
+        if (position.Y < 0)
         {
-            chunkY = (position[0] + 1) / CHUNK_HEIGHT - 1;
+            chunkY = (position.Y + 1) / CHUNK_HEIGHT - 1;
         }
         else
         {
-            chunkY = position[0] / CHUNK_HEIGHT;
+            chunkY = position.Y / CHUNK_HEIGHT;
         }
-        if (position[1] < 0)
+        if (position.X < 0)
         {
-            chunkX = (position[1] + 1) / CHUNK_WIDTH - 1;
+            chunkX = (position.X + 1) / CHUNK_WIDTH - 1;
         }
         else
         {
-            chunkX = position[1] / CHUNK_WIDTH;
+            chunkX = position.X / CHUNK_WIDTH;
         }
         
         System.Console.WriteLine("Chunk Position: " + chunkX + ", " + chunkY);
-        return new[] { chunkY, chunkX };
+        return new Point(chunkY, chunkX);
     }
 }

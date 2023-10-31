@@ -32,7 +32,7 @@ public abstract class Entity
 
     protected int Health;
     protected int Speed;
-    public int[] Position = new int[2];
+    public Point Position;
     public int Layer;
     public SadConsole.Entities.Entity GlyphEntity = new (foreground: Color.Red, background: Color.Black, glyph: 177, zIndex: 0);
     

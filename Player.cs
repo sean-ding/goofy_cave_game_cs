@@ -18,7 +18,7 @@ public class Player : Entity
         MaxHealth = 100;
         Health = MaxHealth;
         Speed = 10;
-        Position = new []{y, x};
+        Position = new Point(y, x);
         Layer = 0;
         GlyphEntity = new SadConsole.Entities.Entity(foreground: Color.Blue, background: Color.Black, glyph: '@', zIndex: 9000) { Position = new Point(GAMEVIEW_WIDTH / 2, GAMEVIEW_HEIGHT / 2) };
         _inputHandler = inputHandler;
@@ -42,7 +42,7 @@ public class Player : Entity
             _inputHandler.PlayerInputEnabled = true;
             await _turnActionComplete.Task;
             _inputHandler.PlayerInputEnabled = false;
-            System.Console.WriteLine(Position[1] + ", " + Position[0]);
+            System.Console.WriteLine(Position.X + ", " + Position.Y);
             ViewManager.UpdateView(this);
         }
     }
@@ -53,25 +53,25 @@ public class Player : Entity
 
     private int _previousChunkY;
     private int _previousChunkX;
-    public void Move(int[] direction)
+    public void Move(Point direction)
     {
-        int[] wantedPosition = {Position[0] + direction[0], Position[1] + direction[1]};
+        Point wantedPosition = new Point(Position.Y + direction.Y, Position.X + direction.X);
         var wantedLocalPosition = ToLocalPosition(wantedPosition);
         var chunkPosition = GetChunkPosition(wantedPosition);
 
         var silly = ToLocalPosition(wantedPosition);
-        System.Console.WriteLine("Local Chunk Position: " + silly[1] + ", " + silly[0]);
+        System.Console.WriteLine("Local Chunk Position: " + silly.X + ", " + silly.Y);
         
-        //if (GetChunk(chunkPosition[0], chunkPosition[1], Layer).Blocking[wantedLocalPosition[0], wantedLocalPosition[1]]) return;
-        if (_previousChunkY != chunkPosition[0])
+        //if (GetChunk(chunkPosition.Y, chunkPosition.X, Layer).Blocking[wantedLocalPosition.Y, wantedLocalPosition.X]) return;
+        if (_previousChunkY != chunkPosition.Y)
         {
-            _previousChunkY = chunkPosition[0];
-            LoadSurroundingChunks(chunkPosition[0], chunkPosition[1], Layer);
+            _previousChunkY = chunkPosition.Y;
+            LoadSurroundingChunks(chunkPosition.Y, chunkPosition.X, Layer);
         }
-        else if (_previousChunkX != chunkPosition[1])
+        else if (_previousChunkX != chunkPosition.X)
         {
-            _previousChunkX = chunkPosition[1];
-            LoadSurroundingChunks(chunkPosition[0], chunkPosition[1], Layer);
+            _previousChunkX = chunkPosition.X;
+            LoadSurroundingChunks(chunkPosition.Y, chunkPosition.X, Layer);
         }
         Position = wantedPosition;
         _turnActionComplete?.TrySetResult(true);

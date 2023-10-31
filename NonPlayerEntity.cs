@@ -6,7 +6,7 @@ public abstract class NonPlayerEntity : Entity
 
     public virtual void Spawn(int y, int x, int layer)
     {
-        Position = new[] { y, x };
+        Position = new Point(y, x);
         Layer = layer;
     }
     public abstract void Turn();

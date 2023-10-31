@@ -12,7 +12,6 @@ public class Swarmer : NonPlayerEntity
         MaxHealth = 10;
         Health = MaxHealth;
         Speed = 10;
-        Position = new int[2];
         GlyphEntity = new SadConsole.Entities.Entity(foreground: Color.Red, background: Color.Black, glyph: '*', zIndex: 0);
     }
 
