@@ -22,6 +22,8 @@ public class Player : Entity
         Layer = 0;
         GlyphEntity = new SadConsole.Entities.Entity(foreground: Color.Blue, background: Color.Black, glyph: '@', zIndex: 9000) { Position = new Point(GAMEVIEW_WIDTH / 2, GAMEVIEW_HEIGHT / 2) };
         _inputHandler = inputHandler;
+
+        List<Item> Inventory = new List<Item>();
     }
 
     private TaskCompletionSource<bool>? _turnActionComplete;
@@ -75,5 +77,15 @@ public class Player : Entity
         }
         Position = wantedPosition;
         _turnActionComplete?.TrySetResult(true);
+    }
+
+    public void Pickup()
+    {
+        List<Item> droppedItems = getTile().Items;
+        System.Console.WriteLine("pickup what? (you fucking cant because idk how input works)");
+        for (int i = 1; i <= droppedItems.Count; i++)
+        {
+            System.Console.WriteLine(i + ". " + droppedItems[i + 1].Name);
+        }
     }
 }

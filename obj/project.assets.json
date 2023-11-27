@@ -387,19 +387,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\sdwdr\\.nuget\\packages\\": {}
+    "C:\\Users\\sunny\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Github Repos\\CaveGame\\CaveGame.csproj",
+      "projectUniqueName": "C:\\Users\\sunny\\RiderProjects\\goofy_cave_game_cs\\CaveGame.csproj",
       "projectName": "CaveGame",
-      "projectPath": "D:\\Github Repos\\CaveGame\\CaveGame.csproj",
-      "packagesPath": "C:\\Users\\sdwdr\\.nuget\\packages\\",
-      "outputPath": "D:\\Github Repos\\CaveGame\\obj\\",
+      "projectPath": "C:\\Users\\sunny\\RiderProjects\\goofy_cave_game_cs\\CaveGame.csproj",
+      "packagesPath": "C:\\Users\\sunny\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\sunny\\RiderProjects\\goofy_cave_game_cs\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\sdwdr\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\sunny\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -450,19 +450,19 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[6.0.22, 6.0.22]"
+            "version": "[6.0.20, 6.0.20]"
           },
           {
             "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[6.0.22, 6.0.22]"
+            "version": "[6.0.20, 6.0.20]"
           },
           {
             "name": "Microsoft.NETCore.App.Ref",
-            "version": "[6.0.22, 6.0.22]"
+            "version": "[6.0.20, 6.0.20]"
           },
           {
             "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[6.0.22, 6.0.22]"
+            "version": "[6.0.20, 6.0.20]"
           }
         ],
         "frameworkReferences": {
@@ -470,7 +470,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
   }

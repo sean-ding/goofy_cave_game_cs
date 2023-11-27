@@ -29,6 +29,9 @@ public class InputHandler
             case Keys.Space:
                 player.Wait();
                 break;
+            case Keys.P:
+                player.Pickup();
+                break;
         }
     }
 }
