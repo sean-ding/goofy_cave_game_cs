@@ -1,4 +1,5 @@
-﻿using CaveGame.Generation;
+﻿using CaveGame.Creatures;
+using CaveGame.Generation;
 using CaveGame.Managers;
 using CaveGame.Scenes;
 using SadConsole.Configuration;
@@ -70,12 +71,16 @@ public static class Program
                 var spawnIndex = SHutil.Random(0, spawnArea.GetLength(0));
                 spawnY = spawnArea[spawnIndex, 0];
                 spawnX = spawnArea[spawnIndex, 1];
+                for (var i = 0; i < 500; i++)
+                {
+                    startChunk.EntityManager.EntityList.Add(new Swarmer(spawnY + 1, spawnX + 1, 0));
+                }
                 break;
             }
             System.Console.WriteLine("Region rejected!");
         }
         inputHandler = new InputHandler();
-        player = new Player(spawnY, spawnX, inputHandler);
+        player = new Player(spawnY, spawnX, 0, inputHandler);
         gameScreen = new GameScreen();
         Game.Instance.Screen = gameScreen;
         ViewManager.UpdateView(player);
@@ -87,6 +92,23 @@ public static class Program
         while (true)
         {
             await player.Turn();
+            var loadedChunks = GetLoadedChunks();
+
+            foreach (var chunk in loadedChunks)
+            {
+                foreach (var entity in chunk.Value.EntityManager.EntityList)
+                {
+                    if (entity is Creature creature)
+                    {
+                        creature.Turn();
+                    }
+                }
+            }
+            
+            foreach (var chunk in loadedChunks)
+            {
+                chunk.Value.EntityManager.UpdateEntities();
+            }
         }
     }
     public static Player GetPlayer()

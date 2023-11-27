@@ -2,41 +2,36 @@ using static CaveGame.Managers.ChunkManager;
 
 namespace CaveGame;
 
-public class Pathfinding
+public static class Pathfinding
 {
-    private Dictionary<Point, Node> Open;
-
-    private Dictionary<Point, Node> Closed;
-    
-    private Node StartNode;
-    private Node EndNode;
-
-    public int[,]? FindPath(int startY, int startX, int endY, int endX, int layer, int hWeight)
+    public static List<Point>? FindPath(int startY, int startX, int endY, int endX, int layer, int hWeight)
     {
-        StartNode = new Node(startY, startX, hWeight) { G = 0 };
-        StartNode.SetH(endY, endX);
+        var open = new Dictionary<Point, Node>();
+        var closed = new Dictionary<Point, Node>();
         
-        Open.Add(new Point(startX, startY), StartNode);
-
-        while (Open.Count != 0)
+        var startNode = new Node(startY, startX, hWeight) { G = 0 };
+        startNode.SetH(endY, endX);
+        
+        open.Add(new Point(startX, startY), startNode);
+        
+        while (open.Count != 0)
         {
-            var currentNode = GetCheapest();
-            Open.Remove(new Point(currentNode.X, currentNode.Y));
-            Closed.Add(new Point(currentNode.X, currentNode.Y), currentNode);
+            var currentNode = GetCheapest(open);
+            var currentKey = new Point(currentNode.X, currentNode.Y);
+            open.Remove(currentKey);
+            closed.Add(currentKey, currentNode);
 
             if (currentNode.Y == endY && currentNode.X == endX)
             {
-                return null; // make this return path
+                return CreatePath(currentNode, closed.Count);
             }
-            for (var y = 0; y < 2; y++)
+            for (var y = -1; y < 2; y++)
             {
-                for (var x = 0; x < 2; x++)
+                for (var x = -1; x < 2; x++)
                 {
                     var childKey = new Point(currentNode.X + x, currentNode.Y + y);
-                    var chunkPosition = GetChunkPosition(childKey);
-                    var chunk = GetChunk(chunkPosition.Y, chunkPosition.X, layer);
                     
-                    if ((y == 0 && x == 0) || Closed.ContainsKey(childKey) || chunk.Blocking[childKey.Y, childKey.X])
+                    if ((y == 0 && x == 0) || closed.ContainsKey(childKey) || GetTile(new []{childKey.Y, childKey.X}, layer).Blocking)
                     {
                         continue;
                     }
@@ -45,18 +40,18 @@ public class Pathfinding
                     childNode.SetH(endY, endX);
                     childNode.SetF();
 
-                    if (Open.ContainsKey(childKey))
+                    if (open.ContainsKey(childKey))
                     {
-                        if (Open[childKey].G > childNode.G)
+                        if (open[childKey].G > childNode.G)
                         {
                             continue;
                         }
-                        Open.Remove(childKey);
-                        Open.Add(childKey, childNode);
+                        open.Remove(childKey);
+                        open.Add(childKey, childNode);
                     }
                     else
                     {
-                        Open.Add(childKey, childNode);
+                        open.Add(childKey, childNode);
                     }
                 }
             }
@@ -65,10 +60,10 @@ public class Pathfinding
         return null;
     }
 
-    private Node GetCheapest()
+    private static Node GetCheapest(Dictionary<Point, Node> open)
     {
         Node? cheapest = null;
-        foreach (var node in Open)
+        foreach (var node in open)
         {
             if (cheapest == null)
             {
@@ -91,19 +86,36 @@ public class Pathfinding
 
         return cheapest!;
     }
+
+    private static List<Point>? CreatePath(Node endNode, int length)
+    {
+        var node = endNode;
+        var path = new List<Point>();
+        for (var i = 0; i < length; i++)
+        {
+            path.Insert(0, new Point(node.X, node.Y));
+            if (node.Parent == null)
+            {
+                return path;
+            }
+            node = node.Parent;
+        }
+
+        return null;
+    }
     
     private class Node
     {
-        public int Y, X;
+        public readonly int Y, X;
         public int F, G, H;
-        public int HWeight;
-        public Node? Parent;
+        private readonly int _hWeight;
+        public readonly Node? Parent;
 
         public Node(int y, int x, int hWeight, Node? parent = null)
         {
             Y = y;
             X = x;
-            HWeight = hWeight;
+            _hWeight = hWeight;
             Parent = parent;
             if (Parent == null)
             {
@@ -117,7 +129,7 @@ public class Pathfinding
         
         public void SetF()
         {
-            F = G + HWeight * H;
+            F = G + _hWeight * H;
         }
 
         public void SetH(int y, int x)

@@ -10,7 +10,7 @@ public class Tile
     }
     
     public string Id = "";
-    public ColoredGlyph Glyph = new ColoredGlyph();
+    public ColoredGlyph Glyph = new ();
     public string Name = "";
     public string Description = "";
     protected int MaxHealth;

@@ -7,23 +7,22 @@ namespace CaveGame;
 
 public class Player : Entity
 {
-    protected override string Id => "swarmer";
-    public override int SpawnWeight => 10;
+    protected override string Id => "player";
     private readonly InputHandler _inputHandler;
     
-    public Player(int y, int x, InputHandler inputHandler)
+    public Player(int y, int x, int layer, InputHandler inputHandler)
     {
         Name = "Player";
         Pronouns = new []{"they", "them", "their"};
         MaxHealth = 100;
         Health = MaxHealth;
         Speed = 10;
-        Position = new Point(y, x);
-        Layer = 0;
-        GlyphEntity = new SadConsole.Entities.Entity(foreground: Color.Blue, background: Color.Black, glyph: '@', zIndex: 9000) { Position = new Point(GAMEVIEW_WIDTH / 2, GAMEVIEW_HEIGHT / 2) };
+        Position = new []{y, x};
+        Layer = layer;
+        Glyph = new ColoredGlyph(foreground: Color.Blue, background: Color.Black, glyph: '@');
         _inputHandler = inputHandler;
     }
-
+    
     private TaskCompletionSource<bool>? _turnActionComplete;
     public async Task Turn()
     {
@@ -42,7 +41,7 @@ public class Player : Entity
             _inputHandler.PlayerInputEnabled = true;
             await _turnActionComplete.Task;
             _inputHandler.PlayerInputEnabled = false;
-            System.Console.WriteLine(Position.X + ", " + Position.Y);
+            System.Console.WriteLine(Position[1] + ", " + Position[0]);
             ViewManager.UpdateView(this);
         }
     }
@@ -51,29 +50,25 @@ public class Player : Entity
         _turnActionComplete?.TrySetResult(true);
     }
 
-    private int _previousChunkY;
-    private int _previousChunkX;
-    public void Move(Point direction)
+    public void Move(int[] direction)
     {
-        Point wantedPosition = new Point(Position.Y + direction.Y, Position.X + direction.X);
-        var wantedLocalPosition = ToLocalPosition(wantedPosition);
-        var chunkPosition = GetChunkPosition(wantedPosition);
+        var wantedPosition = new []{Position[0] + direction[0], Position[1] + direction[1]};
+        var wantedChunkPosition = GetChunkPosition(wantedPosition);
+        var chunkPosition = GetChunkPosition(Position);
 
         var silly = ToLocalPosition(wantedPosition);
-        System.Console.WriteLine("Local Chunk Position: " + silly.X + ", " + silly.Y);
-        
-        //if (GetChunk(chunkPosition.Y, chunkPosition.X, Layer).Blocking[wantedLocalPosition.Y, wantedLocalPosition.X]) return;
-        if (_previousChunkY != chunkPosition.Y)
+        System.Console.WriteLine("Local Chunk Position: " + silly[1] + ", " + silly[0]);
+
+
+        if (GetTile(wantedPosition, Layer).Blocking) return;
+        if (chunkPosition[0] != wantedChunkPosition[0] || chunkPosition[1] != wantedChunkPosition[1])
         {
-            _previousChunkY = chunkPosition.Y;
-            LoadSurroundingChunks(chunkPosition.Y, chunkPosition.X, Layer);
+            LoadSurroundingChunks(wantedChunkPosition[0], wantedChunkPosition[1], Layer);
         }
-        else if (_previousChunkX != chunkPosition.X)
-        {
-            _previousChunkX = chunkPosition.X;
-            LoadSurroundingChunks(chunkPosition.Y, chunkPosition.X, Layer);
-        }
-        Position = wantedPosition;
+
+        Position[0] = wantedPosition[0];
+        Position[1] = wantedPosition[1];
+
         _turnActionComplete?.TrySetResult(true);
     }
 }

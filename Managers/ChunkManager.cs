@@ -6,96 +6,128 @@ namespace CaveGame.Managers;
 
 public static class ChunkManager
 {
-    private static List<Chunk> _loadedChunks = new();
+    private static Dictionary<(int, int, int), Chunk> _loadedChunks = new();
+    
+    private static HashSet<(int, int, int)> _loadedChunkRef = new();
 
     public static Chunk GetChunk(int chunkY, int chunkX, int layer)
-    {
-        var chunk = _loadedChunks.Find(loadedChunk => loadedChunk.Position[0] == chunkY && loadedChunk.Position[1] == chunkX);
-
-        if (chunk == null)
         {
-            chunk = Task.Run(() => LoadChunk(chunkY, chunkX, layer)).Result;
+        Chunk chunk;
+        var chunkKey = (chunkY, chunkX, layer);
+        if (_loadedChunkRef.Contains(chunkKey))
+        {
+            chunk = _loadedChunks[chunkKey];
         }
-
+        else
+        {
+            chunk = Task.Run(() => LoadChunk(chunkY, chunkX, layer, _loadedChunks)).Result;
+        }
+        
         return chunk;
     }
 
     public static void AddChunk(Chunk chunk)
     {
-        _loadedChunks.Add(chunk);
+        _loadedChunkRef.Add((chunk.Position[1], chunk.Position[0], chunk.Layer));
+        _loadedChunks.Add((chunk.Position[1], chunk.Position[0], chunk.Layer), chunk);
     }
 
     public static void LoadSurroundingChunks(int chunkY, int chunkX, int layer)
     {
         // northwest
-        _ = Task.Run(() => LoadChunk(chunkY - 1, chunkX - 1, layer));
+        _ = Task.Run(() => LoadChunk(chunkY - 1, chunkX - 1, layer, _loadedChunks));
         // north
-        _ = Task.Run(() => LoadChunk(chunkY - 1, chunkX, layer));
+        _ = Task.Run(() => LoadChunk(chunkY - 1, chunkX, layer, _loadedChunks));
         // northeast
-        _ = Task.Run(() => LoadChunk(chunkY - 1, chunkX + 1, layer));
+        _ = Task.Run(() => LoadChunk(chunkY - 1, chunkX + 1, layer, _loadedChunks));
         // west
-        _ = Task.Run(() => LoadChunk(chunkY, chunkX - 1, layer));
+        _ = Task.Run(() => LoadChunk(chunkY, chunkX - 1, layer, _loadedChunks));
         // east
-        _ = Task.Run(() => LoadChunk(chunkY, chunkX + 1, layer));
+        _ = Task.Run(() => LoadChunk(chunkY, chunkX + 1, layer, _loadedChunks));
         // southwest
-        _ = Task.Run(() => LoadChunk(chunkY + 1, chunkX - 1, layer));
+        _ = Task.Run(() => LoadChunk(chunkY + 1, chunkX - 1, layer, _loadedChunks));
         // south
-        _ = Task.Run(() => LoadChunk(chunkY + 1, chunkX, layer));
+        _ = Task.Run(() => LoadChunk(chunkY + 1, chunkX, layer, _loadedChunks));
         // southeast
-        _ = Task.Run(() => LoadChunk(chunkY + 1, chunkX + 1, layer));
+        _ = Task.Run(() => LoadChunk(chunkY + 1, chunkX + 1, layer, _loadedChunks));
     }
     
-    public static async Task<Chunk> LoadChunk(int chunkY, int chunkX, int layer)
+    private static async Task<Chunk> LoadChunk(int chunkY, int chunkX, int layer, IDictionary<(int, int, int), Chunk> loadedChunks)
     {
-        var foundChunk = _loadedChunks.Find(loadedChunk => loadedChunk.Position[0] == chunkY && loadedChunk.Position[1] == chunkX);
-        if (foundChunk != null) { return foundChunk; }
+        var chunkKey = (chunkY, chunkX, layer);
+        if (_loadedChunkRef.Contains(chunkKey))
+        {
+            return _loadedChunks[chunkKey];
+        }
+        _loadedChunkRef.Add(chunkKey);
         var createChunkTask = Task.Run(() => new Chunk(null, new[] { chunkY, chunkX }, layer, new Cave(), GetSeed()));
         var chunk = await createChunkTask;
-        foundChunk = _loadedChunks.Find(loadedChunk => loadedChunk.Position[0] == chunkY && loadedChunk.Position[1] == chunkX);
-        if (foundChunk != null) { return foundChunk; }
-        _loadedChunks.Add(chunk);
+        if (_loadedChunkRef.Contains(chunkKey))
+        {
+            return _loadedChunks[chunkKey];
+        }
+        loadedChunks.Add(chunkKey, chunk);
         return chunk;
     }
 
-    public static Point ToLocalPosition(Point position)
+    public static Point ToLocalPosition(int[] position)
     {
-        var chunkPositionY = position.Y % CHUNK_HEIGHT;
-        var chunkPositionX = position.X % CHUNK_WIDTH;
+        var chunkY = position[0] % CHUNK_HEIGHT;
+        var chunkX = position[1] % CHUNK_WIDTH;
 
-        if (chunkPositionY < 0)
+        if (chunkY < 0)
         {
-            chunkPositionY += CHUNK_HEIGHT;
+            chunkY += CHUNK_HEIGHT;
         }
-        if (chunkPositionX < 0)
+        if (chunkX < 0)
         {
-            chunkPositionX += CHUNK_WIDTH;
+            chunkX += CHUNK_WIDTH;
         }
-        
-        return new Point(chunkPositionY, chunkPositionX);
+
+        return new Point(chunkX, chunkY);
     }
 
-    public static Point GetChunkPosition(Point position)
+    public static Point GetChunkPosition(int[] position)
     {
         int chunkY;
         int chunkX;
-        if (position.Y < 0)
+        if (position[0] < 0)
         {
-            chunkY = (position.Y + 1) / CHUNK_HEIGHT - 1;
+            chunkY = (position[0] + 1) / CHUNK_HEIGHT - 1;
         }
         else
         {
-            chunkY = position.Y / CHUNK_HEIGHT;
+            chunkY = position[0] / CHUNK_HEIGHT;
         }
-        if (position.X < 0)
+        if (position[1] < 0)
         {
-            chunkX = (position.X + 1) / CHUNK_WIDTH - 1;
+            chunkX = (position[1] + 1) / CHUNK_WIDTH - 1;
         }
         else
         {
-            chunkX = position.X / CHUNK_WIDTH;
+            chunkX = position[1] / CHUNK_WIDTH;
         }
-        
-        System.Console.WriteLine("Chunk Position: " + chunkX + ", " + chunkY);
-        return new Point(chunkY, chunkX);
+
+        return new Point(chunkX, chunkY);
+    }
+
+    public static Tile GetTile(int[] position, int layer)
+    {
+        var chunkPosition = GetChunkPosition(position);
+        var tilePosition = ToLocalPosition(position);
+
+        var tile = GetChunk(chunkPosition.Y, chunkPosition.X, layer).Tiles[tilePosition.Y,tilePosition.X];
+        return tile;
+    }
+
+    public static Dictionary<(int, int, int), Chunk> GetLoadedChunks()
+    {
+        Dictionary<(int, int, int), Chunk> loadedChunks = new();
+        foreach (var chunk in _loadedChunks)
+        {
+            loadedChunks.Add(chunk.Key, chunk.Value);
+        }
+
+        return loadedChunks;
     }
 }

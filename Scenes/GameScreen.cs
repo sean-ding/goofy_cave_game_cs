@@ -1,5 +1,3 @@
-using Microsoft.Xna.Framework.Graphics;
-using SadConsole.Entities;
 using SadConsole.Input;
 using SadConsole.UI;
 using SadConsole.UI.Controls;
@@ -44,21 +42,16 @@ public class GameScreen : ScreenObject
     }
     public class GameView : Console
     {
-        private EntityManager _entityManager;
         public GameView() : base(GAMEVIEW_WIDTH - 1, GAMEVIEW_HEIGHT - 1, CHUNK_WIDTH * 3, CHUNK_HEIGHT * 3)
         {
             var font = Game.Instance.Fonts["mdcurses16"];
             Font = font;
             FontSize = Font.GetFontSize(IFont.Sizes.Two);
-            
-            _entityManager = new EntityManager();
-            SadComponents.Add(_entityManager);
 
             var borderParams = Border.BorderParameters.GetDefault()
                 .ChangeBorderGlyph(ICellSurface.ConnectedLineThick, Color.White, Color.Black);
             
             Border border = new(this, borderParams);
-            _entityManager.Add(GetPlayer().GlyphEntity);
         }
     }
     public void UpdateScreen(ColoredGlyph[,] glyphs)
@@ -70,6 +63,7 @@ public class GameScreen : ScreenObject
                 glyphs[x,y].CopyAppearanceTo(_gameView.Surface[x,y]);
             }
         }
+        
         _gameView.IsDirty = true;
     }
     public class GameLog : Console

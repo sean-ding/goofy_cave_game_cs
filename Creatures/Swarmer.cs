@@ -1,27 +1,45 @@
+using static CaveGame.Pathfinding;
+
 namespace CaveGame.Creatures;
 
-public class Swarmer : NonPlayerEntity
+public class Swarmer : Creature
 {
     protected override string Id => "swarmer";
     public override int SpawnWeight => 10;
 
-    public Swarmer()
+    public Swarmer(int y, int x, int layer)
     {
         Name = "Swarmer";
-        Pronouns = new []{"it", "it", "itself"};
+        Pronouns = new[] { "it", "it", "itself" };
         MaxHealth = 10;
         Health = MaxHealth;
         Speed = 10;
-        GlyphEntity = new SadConsole.Entities.Entity(foreground: Color.Red, background: Color.Black, glyph: '*', zIndex: 0);
+        Position = new[] { y, x };
+        Layer = layer;
+        Glyph = new ColoredGlyph(foreground: Color.Red, background: Color.Black, glyph: '*');
     }
 
     public override void Turn()
     {
-        
-    }
+        TurnIndex += Speed;
 
-    protected override void Move(int[] wantedPosition)
-    {
-        
+        while (TurnIndex >= TurnSpeed)
+        {
+            TurnIndex -= TurnSpeed;
+
+            if (Path == null)
+            {
+                Wander(5);
+            }
+            else if (Position[0] == TargetPosition[0] && Position[1] == TargetPosition[1])
+            {
+                Wander(5);
+            }
+            
+            if (Path != null && Path.Count > 0)
+            {
+                Move(new[] { Path[0].Y, Path[0].X });
+            }
+        }
     }
 }
