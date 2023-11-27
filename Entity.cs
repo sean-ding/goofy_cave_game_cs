@@ -1,5 +1,6 @@
 using static CaveGame.Program;
 using static CaveGame.GameSettings;
+using static CaveGame.Managers.ChunkManager;
 
 namespace CaveGame;
 
@@ -77,5 +78,13 @@ public abstract class Entity
                     break;
             }
         }
+    }
+
+    public Tile getTile()
+    {
+        Chunk currentChunk = GetChunk(Position.Y, Position.X, 1); // WTF IS LAYER
+        Point positionInChunk = ToLocalPosition(Position);
+        Tile tile = currentChunk.Tiles[positionInChunk.Y, positionInChunk.X];
+        return tile;
     }
 }
