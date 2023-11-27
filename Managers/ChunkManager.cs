@@ -45,7 +45,7 @@ public static class ChunkManager
         _ = Task.Run(() => LoadChunk(chunkY + 1, chunkX + 1, layer));
     }
     
-    public static async Task<Chunk> LoadChunk(int chunkY, int chunkX, int layer)
+    private static async Task<Chunk> LoadChunk(int chunkY, int chunkX, int layer)
     {
         var foundChunk = _loadedChunks.Find(loadedChunk => loadedChunk.Position[0] == chunkY && loadedChunk.Position[1] == chunkX);
         if (foundChunk != null) { return foundChunk; }
