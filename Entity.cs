@@ -82,7 +82,7 @@ public abstract class Entity
 
     public Tile getTile()
     {
-        Chunk currentChunk = GetChunk(Position.Y, Position.X, 1); // WTF IS LAYER
+        Chunk currentChunk = GetChunk(Position.Y, Position.X, Layer); // WTF IS LAYER
         Point positionInChunk = ToLocalPosition(Position);
         Tile tile = currentChunk.Tiles[positionInChunk.Y, positionInChunk.X];
         return tile;
