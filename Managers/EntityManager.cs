@@ -28,8 +28,8 @@ public class EntityManager
         _pendingEntityRemovals.Add(entity);
     }
 
-    public Entity? GetEntity(int[] position)
+    public Entity? GetEntity(int positionY, int positionX)
     {
-         return EntityList.FirstOrDefault(i => i.Position.SequenceEqual(position));
+         return EntityList.FirstOrDefault(i => i.Position.SequenceEqual(new [] {positionY, positionX}));
     }
 }

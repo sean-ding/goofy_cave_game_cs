@@ -38,7 +38,7 @@ public class Swarmer : Creature
             
             if (Path != null && Path.Count > 0)
             {
-                Move(new[] { Path[0].Y, Path[0].X });
+                Move(Path[0]);
             }
         }
     }

@@ -31,7 +31,7 @@ public static class Pathfinding
                 {
                     var childKey = new Point(currentNode.X + x, currentNode.Y + y);
                     
-                    if ((y == 0 && x == 0) || closed.ContainsKey(childKey) || GetTile(new []{childKey.Y, childKey.X}, layer).Blocking)
+                    if ((y == 0 && x == 0) || closed.ContainsKey(childKey) || GetTile(childKey.Y, childKey.X, layer).Blocking)
                     {
                         continue;
                     }

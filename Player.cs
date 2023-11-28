@@ -47,28 +47,24 @@ public class Player : Entity
     }
     public void Wait()
     {
-        _turnActionComplete?.TrySetResult(true);
+        _turnActionComplete?.SetResult(true);
     }
 
-    public void Move(int[] direction)
+    public void Move(Point direction)
     {
-        var wantedPosition = new []{Position[0] + direction[0], Position[1] + direction[1]};
-        var wantedChunkPosition = GetChunkPosition(wantedPosition);
-        var chunkPosition = GetChunkPosition(Position);
+        var wantedPosition = new Point(Position[0] + direction.Y, Position[1] + direction.X);
+        var wantedChunkPosition = GetChunkPosition(wantedPosition.Y, wantedPosition.X);
+        var chunkPosition = GetChunkPosition(Position[0], Position[1]);
 
-        var silly = ToLocalPosition(wantedPosition);
-        System.Console.WriteLine("Local Chunk Position: " + silly[1] + ", " + silly[0]);
-
-
-        if (GetTile(wantedPosition, Layer).Blocking) return;
-        if (chunkPosition[0] != wantedChunkPosition[0] || chunkPosition[1] != wantedChunkPosition[1])
+        if (GetTile(wantedPosition.Y, wantedPosition.X, Layer).Blocking) return;
+        if (chunkPosition.Y != wantedChunkPosition.Y || chunkPosition.X != wantedChunkPosition.X)
         {
-            LoadSurroundingChunks(wantedChunkPosition[0], wantedChunkPosition[1], Layer);
+            LoadSurroundingChunks(wantedChunkPosition.Y, wantedChunkPosition.X, Layer);
         }
 
-        Position[0] = wantedPosition[0];
-        Position[1] = wantedPosition[1];
+        Position[0] = wantedPosition.Y;
+        Position[1] = wantedPosition.X;
 
-        _turnActionComplete?.TrySetResult(true);
+        _turnActionComplete?.SetResult(true);
     }
 }

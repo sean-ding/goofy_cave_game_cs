@@ -84,7 +84,7 @@ public abstract class Entity
                     log.PrintLog("You reality is shifted for " + dmg + " damage.", Color.Red);
                     break;
                 case DamageTypes.Null:
-                    log.PrintLog(DateTime.Now + " () -> Entity.TakeDamage(player, " + dmg + ");", Color.White);
+                    log.PrintLog(DateTime.Now + "/> () -> Entity.TakeDamage(player, " + dmg + ");", Color.White);
                     break;
             }
         }
@@ -120,7 +120,7 @@ public abstract class Entity
                     log.PrintLog(Name + " was dissolved for " + dmg + " damage.", Color.Red);
                     break;
                 case DamageTypes.Mental:
-                    log.PrintLog(Name + " was loosens for " + dmg + " damage.", Color.Red);
+                    log.PrintLog(Name + "'s mind loosens for " + dmg + " damage.", Color.Red);
                     break;
                 case DamageTypes.Entropic:
                     log.PrintLog(Name + "'s being decays for " + dmg + " damage.", Color.Red);
