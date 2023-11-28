@@ -17,4 +17,5 @@ public class Tile
     public int Health;
     public bool Blocking;
     public States State;
+    public List<Item> Items = new List<Item>();
 }

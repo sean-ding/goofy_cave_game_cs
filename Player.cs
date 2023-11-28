@@ -21,6 +21,8 @@ public class Player : Entity
         Layer = layer;
         Glyph = new ColoredGlyph(foreground: Color.Blue, background: Color.Black, glyph: '@');
         _inputHandler = inputHandler;
+
+        List<Item> Inventory = new List<Item>();
     }
     
     private TaskCompletionSource<bool>? _turnActionComplete;
@@ -66,5 +68,15 @@ public class Player : Entity
         Position[1] = wantedPosition.X;
 
         _turnActionComplete?.SetResult(true);
+    }
+
+    public void Pickup()
+    {
+        List<Item> droppedItems = getTile().Items;
+        System.Console.WriteLine("pickup what? (you fucking cant because idk how input works)");
+        for (int i = 1; i <= droppedItems.Count; i++)
+        {
+            System.Console.WriteLine(i + ". " + droppedItems[i + 1].Name);
+        }
     }
 }
