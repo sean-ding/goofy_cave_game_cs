@@ -1,12 +1,14 @@
-﻿using CaveGame.Creatures;
+﻿using CaveGame.Entities;
 using CaveGame.Generation;
 using CaveGame.Managers;
 using CaveGame.Scenes;
+using CaveGame.Components;
 using SadConsole.Configuration;
+using SadConsole.Entities;
 using static CaveGame.GameSettings;
 using static CaveGame.Generation.MainGeneration;
 using static CaveGame.Managers.ChunkManager;
-using static CaveGame.Managers.TileManager;
+using EntityManager = SadConsole.Entities.EntityManager;
 
 // :3
 
@@ -14,9 +16,9 @@ namespace CaveGame;
 public static class Program
 {
     private static int _seed;
-    private static Player player;
-    private static InputHandler inputHandler;
-    private static GameScreen gameScreen;
+    private static Player _player;
+    private static InputHandler _inputHandler;
+    private static GameScreen _gameScreen;
     
     private static void Main()
     {
@@ -79,11 +81,11 @@ public static class Program
             }
             System.Console.WriteLine("Region rejected!");
         }
-        inputHandler = new InputHandler();
-        player = new Player(spawnY, spawnX, 0, inputHandler);
-        gameScreen = new GameScreen();
-        Game.Instance.Screen = gameScreen;
-        ViewManager.UpdateView(player);
+        _inputHandler = new InputHandler();
+        _player = new Player(new PlayerEntity(spawnY, spawnX, 0), _inputHandler);
+        _gameScreen = new GameScreen();
+        Game.Instance.Screen = _gameScreen;
+        ViewManager.UpdateView(_player.Position[0], _player.Position[1], _player.Layer);
         CaveGame();
     }
 
@@ -91,7 +93,10 @@ public static class Program
     {
         while (true)
         {
-            await player.Turn();
+            new CaveGame.Managers.EntityManager().CreateEntity(new []{new CPosition()});
+            
+            await _player.Turn();
+
             var loadedChunks = GetLoadedChunks();
 
             foreach (var chunk in loadedChunks)
@@ -109,19 +114,27 @@ public static class Program
             {
                 chunk.Value.EntityManager.UpdateEntities();
             }
+            
+            ThreadPool.GetMaxThreads(out var maxThreads, out _);
+
+            ThreadPool.GetAvailableThreads(out int availableThreads, out _);
+
+            System.Console.WriteLine("Running Threads: " + (maxThreads - availableThreads));
+            
+            ViewManager.UpdateView(_player.Position[0], _player.Position[1], _player.Layer);
         }
     }
     public static Player GetPlayer()
     {
-        return player;
+        return _player;
     }
     public static InputHandler GetInputHandler()
     {
-        return inputHandler;
+        return _inputHandler;
     }
     public static GameScreen GetGameScreen()
     {
-        return gameScreen;
+        return _gameScreen;
     }
     public static int GetSeed()
     {

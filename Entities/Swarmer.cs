@@ -1,6 +1,4 @@
-using static CaveGame.Pathfinding;
-
-namespace CaveGame.Creatures;
+namespace CaveGame.Entities;
 
 public class Swarmer : Creature
 {
@@ -29,11 +27,11 @@ public class Swarmer : Creature
 
             if (Path == null)
             {
-                Wander(5);
+                Wander(5, 200);
             }
             else if (Position[0] == TargetPosition[0] && Position[1] == TargetPosition[1])
             {
-                Wander(5);
+                Wander(5, 200);
             }
             
             if (Path != null && Path.Count > 0)

@@ -2,10 +2,7 @@ using SadConsole.Input;
 using SadConsole.UI;
 using SadConsole.UI.Controls;
 using static CaveGame.Program;
-using static CaveGame.GraphicsUtil;
 using static CaveGame.GameSettings;
-using static CaveGame.Managers.ChunkManager;
-using static CaveGame.Player;
 
 namespace CaveGame.Scenes;
 

@@ -1,28 +1,21 @@
-using CaveGame.Managers;
-using static CaveGame.Program;
-using static CaveGame.GameSettings;
-using static CaveGame.Managers.ChunkManager;
+using CaveGame.Entities;
 
 namespace CaveGame;
 
-public class Player : Entity
+public class Player
 {
-    protected override string Id => "player";
+    private Entity _entity;
     private readonly InputHandler _inputHandler;
-    
-    public Player(int y, int x, int layer, InputHandler inputHandler)
-    {
-        Name = "Player";
-        Pronouns = new []{"they", "them", "their"};
-        MaxHealth = 100;
-        Health = MaxHealth;
-        Speed = 10;
-        Position = new []{y, x};
-        Layer = layer;
-        Glyph = new ColoredGlyph(foreground: Color.Blue, background: Color.Black, glyph: '@');
-        _inputHandler = inputHandler;
 
-        List<Item> Inventory = new List<Item>();
+    public string Name => _entity.Name;
+    public int[] Position => _entity.Position;
+    public int Layer => _entity.Layer;
+    public ColoredGlyph Glyph => _entity.Glyph;
+    
+    public Player(Entity entity, InputHandler inputHandler)
+    {
+        _entity = entity;
+        _inputHandler = inputHandler;
     }
     
     private TaskCompletionSource<bool>? _turnActionComplete;
@@ -44,7 +37,6 @@ public class Player : Entity
             await _turnActionComplete.Task;
             _inputHandler.PlayerInputEnabled = false;
             System.Console.WriteLine(Position[1] + ", " + Position[0]);
-            ViewManager.UpdateView(this);
         }
     }
     public void Wait()
@@ -54,7 +46,7 @@ public class Player : Entity
 
     public void Move(Point direction)
     {
-        var wantedPosition = new Point(Position[0] + direction.Y, Position[1] + direction.X);
+        var wantedPosition = new Point(Position[1] + direction.X, Position[0] + direction.Y);
         var wantedChunkPosition = GetChunkPosition(wantedPosition.Y, wantedPosition.X);
         var chunkPosition = GetChunkPosition(Position[0], Position[1]);
 
@@ -68,15 +60,5 @@ public class Player : Entity
         Position[1] = wantedPosition.X;
 
         _turnActionComplete?.SetResult(true);
-    }
-
-    public void Pickup()
-    {
-        List<Item> droppedItems = getTile().Items;
-        System.Console.WriteLine("pickup what? (you fucking cant because idk how input works)");
-        for (int i = 1; i <= droppedItems.Count; i++)
-        {
-            System.Console.WriteLine(i + ". " + droppedItems[i + 1].Name);
-        }
     }
 }

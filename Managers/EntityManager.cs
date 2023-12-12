@@ -1,35 +1,27 @@
-using static CaveGame.Managers.ChunkManager;
-
 namespace CaveGame.Managers;
 
 public class EntityManager
 {
-    public List<Entity> EntityList = new();
+    private List<Guid> _entityList = new();
+    private Dictionary<Type, Dictionary<Guid, IComponent>> _componentPools = new();
 
-    private List<Entity> _pendingEntityAdditions = new();
-    
-    private List<Entity> _pendingEntityRemovals = new();
-
-    public void UpdateEntities()
+    public Guid CreateEntity(IComponent[]? components = null)
     {
-        EntityList = EntityList.Except(_pendingEntityRemovals).ToList();
-        EntityList.AddRange(_pendingEntityAdditions);
-        _pendingEntityAdditions.Clear();
-        _pendingEntityRemovals.Clear();
+        var guid = Guid.NewGuid();
+
+        return guid;
     }
 
-    public void EnterChunk(Entity entity)
+    public void AddComponent(Guid entity, IComponent component)
     {
-        _pendingEntityAdditions.Add(entity);
-    }
-    
-    public void ExitChunk(Entity entity)
-    {
-        _pendingEntityRemovals.Add(entity);
-    }
-
-    public Entity? GetEntity(int positionY, int positionX)
-    {
-         return EntityList.FirstOrDefault(i => i.Position.SequenceEqual(new [] {positionY, positionX}));
+        if (_componentPools.TryGetValue(component.GetType(), out var pool))
+        {
+            pool.Add(entity, component);
+        }
+        else
+        {
+            pool = new Dictionary<Guid, IComponent>();
+            _componentPools.Add(component.GetType(), pool);
+        }
     }
 }

@@ -34,6 +34,7 @@ public abstract class Entity
     public int[] Position = new int[2];
     public int Layer;
     public ColoredGlyph Glyph = new (foreground: Color.Red, background: Color.Black, glyph: 177);
+    public List<Item> Inventory = new ();
     
     public void TakeDamage(int dmg, Enum type, string source)
     {
@@ -170,13 +171,5 @@ public abstract class Entity
                     break;
             }
         }
-    }
-
-    public Tile getTile()
-    {
-        Chunk currentChunk = GetChunk(Position.Y, Position.X, Layer); // WTF IS LAYER
-        Point positionInChunk = ToLocalPosition(Position);
-        Tile tile = currentChunk.Tiles[positionInChunk.Y, positionInChunk.X];
-        return tile;
     }
 }

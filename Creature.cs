@@ -15,7 +15,9 @@ public abstract class Creature : Entity
     {
         var wantedChunkPosition = GetChunkPosition(wantedPosition.Y, wantedPosition.X);
         var chunkPosition = GetChunkPosition(Position[0], Position[1]);
+        
         if (GetTile(wantedPosition.Y, wantedPosition.X, Layer).Blocking || Path == null) return;
+        
         if (chunkPosition.Y != wantedChunkPosition.Y || chunkPosition.X != wantedChunkPosition.X)
         {
             GetChunk(chunkPosition.Y, chunkPosition.X, Layer).EntityManager.ExitChunk(this);
@@ -27,13 +29,13 @@ public abstract class Creature : Entity
         Path.RemoveAt(0);
     }
 
-    protected virtual void Pathfind(int startY, int startX, int endY, int endX, int layer, int hWeight)
+    protected virtual void Pathfind(int startY, int startX, int endY, int endX, int layer, int hWeight, int openLimit)
     {
-        Path = FindPath(startY, startX, endY, endX, layer, hWeight);
+        Path = FindPath(startY, startX, endY, endX, layer, hWeight, openLimit);
     }
 
     // TODO: update method to only select tiles that can be seen once vision code is done
-    protected virtual void Wander(int hWeight)
+    protected virtual void Wander(int hWeight, int openLimit)
     {
         var wanderArea = new List<Point>();
         var yOffset = Position[0] - _wanderRange;
@@ -54,6 +56,6 @@ public abstract class Creature : Entity
         var targetPoint = wanderArea[new Random().Next(0, wanderArea.Count)];
         TargetPosition[0] = targetPoint.Y;
         TargetPosition[1] = targetPoint.X;
-        Pathfind(Position[0], Position[1], TargetPosition[0], TargetPosition[1], 0, hWeight);
+        Pathfind(Position[0], Position[1], TargetPosition[0], TargetPosition[1], 0, hWeight, openLimit);
     }
 }

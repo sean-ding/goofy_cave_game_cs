@@ -33,6 +33,12 @@ public static class MainGeneration
 
         System.Console.WriteLine("Region Generated: " + chunkX + ", " + chunkY);
         System.Console.WriteLine("Seed: " + seed);
+        
+        ThreadPool.GetMaxThreads(out var maxThreads, out _);
+
+        ThreadPool.GetAvailableThreads(out int availableThreads, out _);
+
+        System.Console.WriteLine("Running Threads: " + (maxThreads - availableThreads));
         return walls;
     }
     

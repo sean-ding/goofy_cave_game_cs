@@ -4,7 +4,7 @@ namespace CaveGame;
 
 public static class Pathfinding
 {
-    public static List<Point>? FindPath(int startY, int startX, int endY, int endX, int layer, int hWeight)
+    public static List<Point>? FindPath(int startY, int startX, int endY, int endX, int layer, int hWeight, int openLimit)
     {
         var open = new Dictionary<Point, Node>();
         var closed = new Dictionary<Point, Node>();
@@ -13,8 +13,10 @@ public static class Pathfinding
         startNode.SetH(endY, endX);
         
         open.Add(new Point(startX, startY), startNode);
+
+        var pathIndex = 0;
         
-        while (open.Count != 0)
+        while (open.Count != 0 && pathIndex < openLimit)
         {
             var currentNode = GetCheapest(open);
             var currentKey = new Point(currentNode.X, currentNode.Y);
@@ -55,6 +57,8 @@ public static class Pathfinding
                     }
                 }
             }
+
+            pathIndex++;
         }
 
         return null;

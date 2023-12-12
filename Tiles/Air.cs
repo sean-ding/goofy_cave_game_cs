@@ -8,11 +8,10 @@ public class Air : Tile
     {
         Id = "air";
         Glyph = new ColoredGlyph(White, Transparent, 250);
-        Name = "Air";
-        Description = "";
         MaxHealth = -1;
         Health = MaxHealth;
         Blocking = false;
+        Transparency = 0;
         State = States.Gas;
     }
 }

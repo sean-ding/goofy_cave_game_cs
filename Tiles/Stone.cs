@@ -8,11 +8,10 @@ public class Stone : Tile
     {
         Id = "stone";
         Glyph = new ColoredGlyph(White, Transparent, '#');
-        Name = "Stone";
-        Description = "Rock and stone!";
         MaxHealth = 1000;
         Health = MaxHealth;
         Blocking = true;
+        Transparency = 0;
         State = States.Solid;
     }
 }
