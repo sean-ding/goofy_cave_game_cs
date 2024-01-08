@@ -4,7 +4,7 @@ using static CaveGame.Managers.ChunkManager;
 
 namespace CaveGame;
 
-public abstract class Entity
+public abstract class EntityOld
 {
     public enum DamageTypes
     {

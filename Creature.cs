@@ -3,7 +3,7 @@ using static CaveGame.Pathfinding;
 
 namespace CaveGame;
 
-public abstract class Creature : Entity
+public abstract class Creature : EntityOld
 {
     public abstract int SpawnWeight { get; }
     protected int[] TargetPosition = new int[2];

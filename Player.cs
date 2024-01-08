@@ -4,17 +4,17 @@ namespace CaveGame;
 
 public class Player
 {
-    private Entity _entity;
+    private EntityOld _entityOld;
     private readonly InputHandler _inputHandler;
 
-    public string Name => _entity.Name;
-    public int[] Position => _entity.Position;
-    public int Layer => _entity.Layer;
-    public ColoredGlyph Glyph => _entity.Glyph;
+    public string Name => _entityOld.Name;
+    public int[] Position => _entityOld.Position;
+    public int Layer => _entityOld.Layer;
+    public ColoredGlyph Glyph => _entityOld.Glyph;
     
-    public Player(Entity entity, InputHandler inputHandler)
+    public Player(EntityOld entityOld, InputHandler inputHandler)
     {
-        _entity = entity;
+        _entityOld = entityOld;
         _inputHandler = inputHandler;
     }
     

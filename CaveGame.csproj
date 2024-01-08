@@ -37,8 +37,11 @@
     <None Update="Fonts\mdcurses16.font">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+
+
   <ItemGroup>
-    <Folder Include="Systems\" />
+    <Folder Include="Components\" />
+    <Folder Include="Entities\" />
   </ItemGroup>
 
   </ItemGroup>

@@ -4,11 +4,9 @@ using CaveGame.Managers;
 using CaveGame.Scenes;
 using CaveGame.Components;
 using SadConsole.Configuration;
-using SadConsole.Entities;
 using static CaveGame.GameSettings;
 using static CaveGame.Generation.MainGeneration;
 using static CaveGame.Managers.ChunkManager;
-using EntityManager = SadConsole.Entities.EntityManager;
 
 // :3
 
@@ -82,7 +80,7 @@ public static class Program
             System.Console.WriteLine("Region rejected!");
         }
         _inputHandler = new InputHandler();
-        _player = new Player(new PlayerEntity(spawnY, spawnX, 0), _inputHandler);
+        _player = new Player(new PlayerEntityOld(spawnY, spawnX, 0), _inputHandler);
         _gameScreen = new GameScreen();
         Game.Instance.Screen = _gameScreen;
         ViewManager.UpdateView(_player.Position[0], _player.Position[1], _player.Layer);
@@ -93,7 +91,7 @@ public static class Program
     {
         while (true)
         {
-            new CaveGame.Managers.EntityManager().CreateEntity(new []{new CPosition()});
+            new EntityManager().CreateEntity(new IComponent[]{new CPosition(0, 0), new CGlyph(new ColoredGlyph())});
             
             await _player.Turn();
 
