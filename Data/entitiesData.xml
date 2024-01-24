@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<entities>
-    <entity Name="Swarmer" ISBN="1-861001-57-8" publicationdate="1823-01-28">
-        <title>Pride And Prejudice</title>
-        <price>24.95</price>
-    </entity>
-</entities>  

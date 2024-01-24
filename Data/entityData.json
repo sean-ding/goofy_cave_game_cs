@@ -1,0 +1,112 @@
+{
+	"herobrine": {
+		"id": "herobrine",
+		"name": "Herobrine",
+		"ancestor": "human",
+		"pronouns": ["he", "his", "himself"],
+		"baseLevel": 100,
+		"baseSpeed": 200,
+		"glyph": {
+			"char": "H",
+			"foreground": "White"
+		},
+		"limbs": null
+	},
+	"human": {
+		"id": "human",
+		"name": "Human",
+		"pronouns": ["they", "their", "themself"],
+		"ancestor": null,
+		"baseLevel": 1,
+		"baseSpeed": 100,
+		"glyph": {
+			"char": "@",
+			"foreground": "Blue"
+		},
+		"limbs": [
+			{
+				"id": "human_torso",
+				"children": [
+					{
+						"id": "human_head"
+					},
+					{
+						"id": "human_right_arm",
+						"children": [
+							{
+								"id": "human_right_hand"
+							}
+						]
+					},
+					{
+						"id": "human_left_arm",
+						"children": [
+							{
+								"id": "human_left_hand"
+							}
+						]
+					},
+					{
+						"id": "human_right_leg",
+						"children": [
+							{
+								"id": "human_right_foot"
+							}
+						]
+					},
+					{
+						"id": "human_left_leg",
+						"children": [
+							{
+								"id": "human_left_foot"
+							}
+						]
+					}
+				]
+			}	
+		]
+	},
+	"swarmer": {
+		"id": "swarmer",
+		"name": "Swarmer",
+		"pronouns": ["it", "its", "itself"],
+		"ancestor": null,
+		"baseLevel": 4,
+		"baseSpeed": 100,
+		"glyph": {
+			"char": "*",
+			"foreground": "Red"
+		},
+		"limbs": [
+			{
+				"id": "swarmer_thorax",
+				"children": [
+					{
+						"id": "swarmer_head"
+					},
+					{
+						"id": "swarmer_right_foreleg"
+					},
+					{
+						"id": "swarmer_left_foreleg"
+					},
+					{
+						"id": "swarmer_right_midleg"
+					},
+					{
+						"id": "swarmer_left_midleg"
+					},
+					{
+						"id": "swarmer_right_hindleg"
+					},
+					{
+						"id": "swarmer_left_hindleg"
+					},
+					{
+						"id": "swarmer_abdomen"
+					}
+				]
+			}
+		]
+	}
+}

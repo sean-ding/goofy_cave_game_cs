@@ -1,0 +1,116 @@
+{
+	"human_torso": {
+		"name": "Torso",
+		"categories": ["Torso", "Vital"],
+		"baseHealth": 20,
+		"baseHitWeight": 10
+	},
+	"human_head": {
+		"name": "Head",
+		"categories": ["Head", "Vital"],
+		"baseHealth": 20,
+		"baseHitWeight": 5
+	},
+	"human_right_arm": {
+		"name": "Right Arm",
+		"categories": ["Arm"],
+		"baseHealth": 10,
+		"baseHitWeight": 8
+	},
+	"human_left_arm": {
+		"name": "Left Arm",
+		"categories": ["Arm"],
+		"baseHealth": 10,
+		"baseHitWeight": 8
+	},
+	"human_right_hand": {
+		"name": "Right Hand",
+		"categories": ["Hand", "Wielding"],
+		"baseHealth": 5,
+		"baseHitWeight": 3
+	},
+	"human_left_hand": {
+		"name": "Left Hand",
+		"categories": ["Hand", "Wielding"],
+		"baseHealth": 5,
+		"baseHitWeight": 3
+	},
+	"human_right_leg": {
+		"name": "Right Leg",
+		"categories": ["Leg", "Movement"],
+		"baseHealth": 10,
+		"baseHitWeight": 8
+	},
+	"human_left_leg": {
+		"name": "Left Leg",
+		"categories": ["Leg", "Movement"],
+		"baseHealth": 10,
+		"baseHitWeight": 8
+	},
+	"human_right_foot": {
+		"name": "Right Foot",
+		"categories": ["Foot", "Movement"],
+		"baseHealth": 5,
+		"baseHitWeight": 3
+	},
+	"human_left_foot": {
+		"name": "Left Foot",
+		"categories": ["Foot", "Movement"],
+		"baseHealth": 5,
+		"baseHitWeight": 3
+	},
+	"swarmer_thorax": {
+		"name": "Torso",
+		"categories": ["Torso", "Vital"],
+		"baseHealth": 5,
+		"baseHitWeight": 10
+	},
+	"swarmer_head": {
+		"name": "Head",
+		"categories": ["Head", "Vital"],
+		"baseHealth": 10,
+		"baseHitWeight": 8
+	},
+	"swarmer_right_foreleg": {
+		"name": "Right Foreleg",
+		"categories": ["Leg", "Movement"],
+		"baseHealth": 2,
+		"baseHitWeight": 4
+	},
+	"swarmer_left_foreleg": {
+		"name": "Left Foreleg",
+		"categories": ["Leg", "Movement"],
+		"baseHealth": 2,
+		"baseHitWeight": 4
+	},
+	"swarmer_right_midleg": {
+		"name": "Right Midleg",
+		"categories": ["Leg", "Movement"],
+		"baseHealth": 2,
+		"baseHitWeight": 4
+	},
+	"swarmer_left_midleg": {
+		"name": "Left Midleg",
+		"categories": ["Leg", "Movement"],
+		"baseHealth": 2,
+		"baseHitWeight": 4
+	},
+	"swarmer_right_hindleg": {
+		"name": "Right Hindleg",
+		"categories": ["Leg", "Movement"],
+		"baseHealth": 2,
+		"baseHitWeight": 4
+	},
+	"swarmer_left_hindleg": {
+		"name": "Left Hindleg",
+		"categories": ["Leg", "Movement"],
+		"baseHealth": 2,
+		"baseHitWeight": 4
+	},
+	"swarmer_abdomen": {
+		"name": "Abdomen",
+		"categories": ["Leg", "Movement"],
+		"baseHealth": 4,
+		"baseHitWeight": 6
+	}
+}

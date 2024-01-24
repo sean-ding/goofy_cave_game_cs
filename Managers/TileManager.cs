@@ -5,5 +5,4 @@ namespace CaveGame.Managers;
 
 public static class TileManager
 {
-
 }

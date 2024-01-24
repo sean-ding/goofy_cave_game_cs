@@ -35,3 +35,5 @@ C:\Users\sdwdr\Documents\Rider Projects\goofy_cave_game_cs\obj\Debug\net6.0\refi
 C:\Users\sdwdr\Documents\Rider Projects\goofy_cave_game_cs\obj\Debug\net6.0\CaveGame.pdb
 C:\Users\sdwdr\Documents\Rider Projects\goofy_cave_game_cs\obj\Debug\net6.0\CaveGame.genruntimeconfig.cache
 C:\Users\sdwdr\Documents\Rider Projects\goofy_cave_game_cs\obj\Debug\net6.0\ref\CaveGame.dll
+C:\Users\sdwdr\Documents\Rider Projects\goofy_cave_game_cs\bin\Debug\net6.0\Data\entityData.json
+C:\Users\sdwdr\Documents\Rider Projects\goofy_cave_game_cs\bin\Debug\net6.0\Data\limbData.json
