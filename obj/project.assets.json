@@ -1,0 +1,460 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "ColorMineStandard/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/ColorMineStandard.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ColorMineStandard.dll": {}
+        }
+      },
+      "MonoGame.Framework.DesktopGL/3.8.1.303": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/MonoGame.Framework.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/MonoGame.Framework.dll": {}
+        },
+        "build": {
+          "build/MonoGame.Framework.DesktopGL.targets": {}
+        },
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/libSDL2-2.0.so.0": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/libopenal.so.1": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx/native/libSDL2.dylib": {
+            "assetType": "native",
+            "rid": "osx"
+          },
+          "runtimes/osx/native/libopenal.1.dylib": {
+            "assetType": "native",
+            "rid": "osx"
+          },
+          "runtimes/win-x64/native/SDL2.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/soft_oal.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/SDL2.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/soft_oal.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "Newtonsoft.Json/13.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "SadConsole/10.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3",
+          "TheSadRogue.Primitives": "1.6.0-rc3"
+        },
+        "compile": {
+          "lib/net6.0/SadConsole.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/SadConsole.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "SadConsole.Extended/10.0.0": {
+        "type": "package",
+        "dependencies": {
+          "ColorMineStandard": "1.0.0",
+          "SadConsole": "10.0.0",
+          "System.Text.Encoding.CodePages": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/SadConsole.Extended.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/SadConsole.Extended.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "SadConsole.Host.MonoGame/10.0.0": {
+        "type": "package",
+        "dependencies": {
+          "SadConsole": "10.0.0"
+        },
+        "compile": {
+          "lib/net6.0/SadConsole.Host.MonoGame.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/SadConsole.Host.MonoGame.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.Text.Encoding.CodePages/6.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/System.Text.Encoding.CodePages.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/System.Text.Encoding.CodePages.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net6.0/System.Text.Encoding.CodePages.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
+      "TheSadRogue.Primitives/1.6.0-rc3": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/TheSadRogue.Primitives.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/TheSadRogue.Primitives.dll": {
+            "related": ".xml"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ColorMineStandard/1.0.0": {
+      "sha512": "sR4zFOJ6wT0bFgjivk4plQrO3q7j/ew6aKJY48ssNoXBvq7jiLB9PtuS4UOGqOcxEM571QSJKeNU3GmKFXc/dw==",
+      "type": "package",
+      "path": "colorminestandard/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "colorminestandard.1.0.0.nupkg.sha512",
+        "colorminestandard.nuspec",
+        "lib/netstandard2.0/ColorMineStandard.dll"
+      ]
+    },
+    "MonoGame.Framework.DesktopGL/3.8.1.303": {
+      "sha512": "eGYhqn0n1olk8MNYeE9EuBmoNNECN1T18rPMaQpkzsEQ0H3nVyFPXC+uCo78v5pi5juQpJ3PSFnSkjzZJ1U58A==",
+      "type": "package",
+      "path": "monogame.framework.desktopgl/3.8.1.303",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "build/MonoGame.Framework.DesktopGL.targets",
+        "lib/net6.0/MonoGame.Framework.dll",
+        "monogame.framework.desktopgl.3.8.1.303.nupkg.sha512",
+        "monogame.framework.desktopgl.nuspec",
+        "runtimes/linux-x64/native/libSDL2-2.0.so.0",
+        "runtimes/linux-x64/native/libopenal.so.1",
+        "runtimes/osx/native/libSDL2.dylib",
+        "runtimes/osx/native/libopenal.1.dylib",
+        "runtimes/win-x64/native/SDL2.dll",
+        "runtimes/win-x64/native/soft_oal.dll",
+        "runtimes/win-x86/native/SDL2.dll",
+        "runtimes/win-x86/native/soft_oal.dll"
+      ]
+    },
+    "Newtonsoft.Json/13.0.3": {
+      "sha512": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
+      "type": "package",
+      "path": "newtonsoft.json/13.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "README.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/net6.0/Newtonsoft.Json.dll",
+        "lib/net6.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "newtonsoft.json.13.0.3.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
+    "SadConsole/10.0.0": {
+      "sha512": "UpzC1YOxxqxyMvAsAio5ZpALDFbR4GphEQTIqWzmf1txpOdu0lCLv6nM+MAK/8Y94ouMw2Bq3H4PkI/CySjIcA==",
+      "type": "package",
+      "path": "sadconsole/10.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net6.0/SadConsole.dll",
+        "lib/net6.0/SadConsole.xml",
+        "lib/net7.0/SadConsole.dll",
+        "lib/net7.0/SadConsole.xml",
+        "nugeticon.png",
+        "readme.txt",
+        "sadconsole.10.0.0.nupkg.sha512",
+        "sadconsole.nuspec"
+      ]
+    },
+    "SadConsole.Extended/10.0.0": {
+      "sha512": "XEcG6eYX/EY3ItJm+PxJV6N5s2OjKyQzT72BoM/jV8T/AmlW4srZXoIzTvYQvtKDUwhD4d+KdHtk+bV7FHJSgA==",
+      "type": "package",
+      "path": "sadconsole.extended/10.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net6.0/SadConsole.Extended.dll",
+        "lib/net6.0/SadConsole.Extended.xml",
+        "lib/net7.0/SadConsole.Extended.dll",
+        "lib/net7.0/SadConsole.Extended.xml",
+        "nugeticon.png",
+        "sadconsole.extended.10.0.0.nupkg.sha512",
+        "sadconsole.extended.nuspec"
+      ]
+    },
+    "SadConsole.Host.MonoGame/10.0.0": {
+      "sha512": "zvr7QguabZmgWT827vsSCWH1v8Af+oxhB4UTdD9jqnBfeoJ9xdp15AYiLlIlknCssFoe3TcmttixbDamOth/cg==",
+      "type": "package",
+      "path": "sadconsole.host.monogame/10.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net6.0/SadConsole.Host.MonoGame.dll",
+        "lib/net6.0/SadConsole.Host.MonoGame.xml",
+        "lib/net7.0/SadConsole.Host.MonoGame.dll",
+        "lib/net7.0/SadConsole.Host.MonoGame.xml",
+        "nugeticon.png",
+        "readme.txt",
+        "sadconsole.host.monogame.10.0.0.nupkg.sha512",
+        "sadconsole.host.monogame.nuspec"
+      ]
+    },
+    "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+      "sha512": "/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
+      "type": "package",
+      "path": "system.runtime.compilerservices.unsafe/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/net461/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/net6.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netcoreapp3.1/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netcoreapp3.1/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+        "system.runtime.compilerservices.unsafe.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Text.Encoding.CodePages/6.0.0": {
+      "sha512": "ZFCILZuOvtKPauZ/j/swhvw68ZRi9ATCfvGbk1QfydmcXBkIWecWKn/250UH7rahZ5OoDBaiAudJtPvLwzw85A==",
+      "type": "package",
+      "path": "system.text.encoding.codepages/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/System.Text.Encoding.CodePages.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net461/System.Text.Encoding.CodePages.dll",
+        "lib/net461/System.Text.Encoding.CodePages.xml",
+        "lib/net6.0/System.Text.Encoding.CodePages.dll",
+        "lib/net6.0/System.Text.Encoding.CodePages.xml",
+        "lib/netcoreapp3.1/System.Text.Encoding.CodePages.dll",
+        "lib/netcoreapp3.1/System.Text.Encoding.CodePages.xml",
+        "lib/netstandard2.0/System.Text.Encoding.CodePages.dll",
+        "lib/netstandard2.0/System.Text.Encoding.CodePages.xml",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "runtimes/win/lib/net461/System.Text.Encoding.CodePages.dll",
+        "runtimes/win/lib/net461/System.Text.Encoding.CodePages.xml",
+        "runtimes/win/lib/net6.0/System.Text.Encoding.CodePages.dll",
+        "runtimes/win/lib/net6.0/System.Text.Encoding.CodePages.xml",
+        "runtimes/win/lib/netcoreapp3.1/System.Text.Encoding.CodePages.dll",
+        "runtimes/win/lib/netcoreapp3.1/System.Text.Encoding.CodePages.xml",
+        "runtimes/win/lib/netstandard2.0/System.Text.Encoding.CodePages.dll",
+        "runtimes/win/lib/netstandard2.0/System.Text.Encoding.CodePages.xml",
+        "system.text.encoding.codepages.6.0.0.nupkg.sha512",
+        "system.text.encoding.codepages.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "TheSadRogue.Primitives/1.6.0-rc3": {
+      "sha512": "w+822nVlmmcKTAl8YFMA9THxz9mCRDWjs3f2jRrHPHSvpmTllt2TJAYDgmMCkSYQpg9PAaKTBBV/x7OH6fqhHQ==",
+      "type": "package",
+      "path": "thesadrogue.primitives/1.6.0-rc3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net5.0/TheSadRogue.Primitives.dll",
+        "lib/net5.0/TheSadRogue.Primitives.xml",
+        "lib/net6.0/TheSadRogue.Primitives.dll",
+        "lib/net6.0/TheSadRogue.Primitives.xml",
+        "lib/net7.0/TheSadRogue.Primitives.dll",
+        "lib/net7.0/TheSadRogue.Primitives.xml",
+        "lib/netcoreapp3.1/TheSadRogue.Primitives.dll",
+        "lib/netcoreapp3.1/TheSadRogue.Primitives.xml",
+        "lib/netstandard2.1/TheSadRogue.Primitives.dll",
+        "lib/netstandard2.1/TheSadRogue.Primitives.xml",
+        "thesadrogue.primitives.1.6.0-rc3.nupkg.sha512",
+        "thesadrogue.primitives.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "MonoGame.Framework.DesktopGL >= 3.8.1.303",
+      "SadConsole.Extended >= 10.0.0",
+      "SadConsole.Host.MonoGame >= 10.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\sdwdr\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\sdwdr\\Documents\\Rider Projects\\goofy_cave_game_cs\\CaveGame.csproj",
+      "projectName": "CaveGame",
+      "projectPath": "C:\\Users\\sdwdr\\Documents\\Rider Projects\\goofy_cave_game_cs\\CaveGame.csproj",
+      "packagesPath": "C:\\Users\\sdwdr\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\sdwdr\\Documents\\Rider Projects\\goofy_cave_game_cs\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\sdwdr\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.bepinex.dev/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "dependencies": {
+          "MonoGame.Framework.DesktopGL": {
+            "target": "Package",
+            "version": "[3.8.1.303, )"
+          },
+          "SadConsole.Extended": {
+            "target": "Package",
+            "version": "[10.0.0, )"
+          },
+          "SadConsole.Host.MonoGame": {
+            "target": "Package",
+            "version": "[10.0.0, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-rc.1.23463.5\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

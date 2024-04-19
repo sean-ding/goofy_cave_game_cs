@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "yWXMkSomF/I5SU/wF2roZRTfSp5zWuzYOvf9bJ6CEEsHexlykV3AbbDJOT3chljRHic0UQ3efPBVw+kV1LqnSQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\sdwdr\\Documents\\Rider Projects\\goofy_cave_game_cs\\CaveGame.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\sdwdr\\.nuget\\packages\\colorminestandard\\1.0.0\\colorminestandard.1.0.0.nupkg.sha512",
+    "C:\\Users\\sdwdr\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512",
+    "C:\\Users\\sdwdr\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\sdwdr\\.nuget\\packages\\sadconsole\\10.0.0\\sadconsole.10.0.0.nupkg.sha512",
+    "C:\\Users\\sdwdr\\.nuget\\packages\\sadconsole.extended\\10.0.0\\sadconsole.extended.10.0.0.nupkg.sha512",
+    "C:\\Users\\sdwdr\\.nuget\\packages\\sadconsole.host.monogame\\10.0.0\\sadconsole.host.monogame.10.0.0.nupkg.sha512",
+    "C:\\Users\\sdwdr\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\sdwdr\\.nuget\\packages\\system.text.encoding.codepages\\6.0.0\\system.text.encoding.codepages.6.0.0.nupkg.sha512",
+    "C:\\Users\\sdwdr\\.nuget\\packages\\thesadrogue.primitives\\1.6.0-rc3\\thesadrogue.primitives.1.6.0-rc3.nupkg.sha512"
+  ],
+  "logs": []
+}
