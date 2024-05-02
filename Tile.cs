@@ -16,5 +16,6 @@ public class Tile
     public bool Blocking;
     public double Transparency;
     public States State;
+    public byte LightLevel;
     public List<Item> Items = new List<Item>();
 }

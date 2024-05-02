@@ -52,7 +52,7 @@ public class Player : Entity
 
     public void Move(Point direction)
     {
-        var wantedPosition = new Point(Position[0] + direction.Y, Position[1] + direction.X);
+        var wantedPosition = new Point(Position[1] + direction.X, Position[0] + direction.Y);
         var wantedChunkPosition = GetChunkPosition(wantedPosition.Y, wantedPosition.X);
         var chunkPosition = GetChunkPosition(Position[0], Position[1]);
 

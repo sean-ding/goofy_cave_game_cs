@@ -45,7 +45,7 @@ public abstract class Creature : Entity
         {
             for (var x = 0; x < 2 * _wanderRange; x++)
             {
-                var offsetPosition = new Point (x + xOffset, y + yOffset);
+                var offsetPosition = new Point(x + xOffset, y + yOffset);
                 if (GetTile(offsetPosition.Y, offsetPosition.X, 0).Blocking == false)
                 {
                     wanderArea.Add(offsetPosition);

@@ -39,7 +39,7 @@ public class GameScreen : ScreenObject
     }
     public class GameView : Console
     {
-        public GameView() : base(GAMEVIEW_WIDTH - 1, GAMEVIEW_HEIGHT - 1, CHUNK_WIDTH * 3, CHUNK_HEIGHT * 3)
+        public GameView() : base(GAMEVIEW_WIDTH, GAMEVIEW_HEIGHT, CHUNK_WIDTH * 3, CHUNK_HEIGHT * 3)
         {
             var font = Game.Instance.Fonts["mdcurses16"];
             Font = font;
