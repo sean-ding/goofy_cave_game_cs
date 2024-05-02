@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yWXMkSomF/I5SU/wF2roZRTfSp5zWuzYOvf9bJ6CEEsHexlykV3AbbDJOT3chljRHic0UQ3efPBVw+kV1LqnSQ==",
+  "dgSpecHash": "FeQMyeTVn9bTAfL2upCldt3icfQagwJ5R8/c/F4QzWGHDE14pcR90o0Cjb5lgvJfVSlCQ0FJfxHb6Ohveu9SZQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\sdwdr\\Documents\\Rider Projects\\goofy_cave_game_cs\\CaveGame.csproj",
+  "projectFilePath": "D:\\Github Repos\\goofy_cave_game_cs\\CaveGame.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sdwdr\\.nuget\\packages\\colorminestandard\\1.0.0\\colorminestandard.1.0.0.nupkg.sha512",
     "C:\\Users\\sdwdr\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512",
@@ -12,7 +12,11 @@
     "C:\\Users\\sdwdr\\.nuget\\packages\\sadconsole.host.monogame\\10.0.0\\sadconsole.host.monogame.10.0.0.nupkg.sha512",
     "C:\\Users\\sdwdr\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\sdwdr\\.nuget\\packages\\system.text.encoding.codepages\\6.0.0\\system.text.encoding.codepages.6.0.0.nupkg.sha512",
-    "C:\\Users\\sdwdr\\.nuget\\packages\\thesadrogue.primitives\\1.6.0-rc3\\thesadrogue.primitives.1.6.0-rc3.nupkg.sha512"
+    "C:\\Users\\sdwdr\\.nuget\\packages\\thesadrogue.primitives\\1.6.0-rc3\\thesadrogue.primitives.1.6.0-rc3.nupkg.sha512",
+    "C:\\Users\\sdwdr\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.22\\microsoft.netcore.app.ref.6.0.22.nupkg.sha512",
+    "C:\\Users\\sdwdr\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.22\\microsoft.windowsdesktop.app.ref.6.0.22.nupkg.sha512",
+    "C:\\Users\\sdwdr\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.22\\microsoft.aspnetcore.app.ref.6.0.22.nupkg.sha512",
+    "C:\\Users\\sdwdr\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.22\\microsoft.netcore.app.host.win-x64.6.0.22.nupkg.sha512"
   ],
   "logs": []
 }

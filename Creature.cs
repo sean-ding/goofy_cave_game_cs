@@ -1,5 +1,6 @@
 using static CaveGame.Managers.ChunkManager;
 using static CaveGame.Pathfinding;
+using static CaveGame.Viewcast;
 
 namespace CaveGame;
 
@@ -35,27 +36,22 @@ public abstract class Creature : Entity
     }
 
     // TODO: update method to only select tiles that can be seen once vision code is done
-    protected virtual void Wander(int hWeight, int openLimit)
+    protected virtual void Wander(int maxTries, int hWeight, int openLimit)
     {
-        var wanderArea = new List<Point>();
-        var yOffset = Position[0] - _wanderRange;
-        var xOffset = Position[1] - _wanderRange;
-        
-        for (var y = 0; y < 2 * _wanderRange; y++)
+        var wanderArea = GetShadowMask(Position[0], Position[1], Layer, _wanderRange, _wanderRange);
+        var rand = new Random();
+
+        for (var i = 0; i < maxTries; i++)
         {
-            for (var x = 0; x < 2 * _wanderRange; x++)
+            var guessY = rand.Next(0, _wanderRange * 2 + 1);
+            var guessX = rand.Next(0, _wanderRange * 2 + 1);
+            if (wanderArea[guessY, guessX])
             {
-                var offsetPosition = new Point(x + xOffset, y + yOffset);
-                if (GetTile(offsetPosition.Y, offsetPosition.X, 0).Blocking == false)
-                {
-                    wanderArea.Add(offsetPosition);
-                }
+                TargetPosition[0] = Position[0] + (guessY - _wanderRange / 2);
+                TargetPosition[1] = Position[1] + (guessX - _wanderRange / 2);
+                Pathfind(Position[0], Position[1], TargetPosition[0], TargetPosition[1], 0, hWeight, openLimit);
+                return;
             }
         }
-
-        var targetPoint = wanderArea[new Random().Next(0, wanderArea.Count)];
-        TargetPosition[0] = targetPoint.Y;
-        TargetPosition[1] = targetPoint.X;
-        Pathfind(Position[0], Position[1], TargetPosition[0], TargetPosition[1], 0, hWeight, openLimit);
     }
 }
